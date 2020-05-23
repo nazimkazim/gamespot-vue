@@ -4,6 +4,7 @@ import VueResource from 'vue-resource';
 import router from './routes';
 import store from './Store/store'
 import vuelidate from 'vuelidate'
+import wysiwyg from 'vue-wysiwyg'
 
 import Button from './components/UI/Button.vue';
 import { MdCard } from 'vue-material/dist/components';
@@ -13,6 +14,7 @@ Vue.component('app-button', Button);
 
 
 Vue.use(MdCard);
+Vue.use(wysiwyg)
 
 Vue.use(VueResource);
 Vue.http.options.root = '';

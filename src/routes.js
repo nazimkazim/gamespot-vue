@@ -5,6 +5,11 @@ import store from './Store/store';
 import Home from './components/Home/Index.vue';
 import Signin from './components/Signin/index.vue';
 import Dashboard from './components/Dashboard/index.vue';
+import MainDashboard from './components/Dashboard/main.vue';
+// eslint-disable-next-line no-unused-vars
+import AddPosts from './components/Dashboard/AddPosts.vue';
+// eslint-disable-next-line no-unused-vars
+import PostsList from './components/Dashboard/PostsList.vue';
 
 Vue.use(VueRouter);
 
@@ -14,7 +19,7 @@ const authGuard = {
 
     const redirect = () => {
       if (store.state.admin.token) {
-      if (to.path === '/signin') {
+        if (to.path === '/signin') {
           next('/dashboard');
         } else {
           next();
@@ -43,7 +48,13 @@ const authGuard = {
 const routes = [
   { path: '/', component: Home },
   { path: '/signin', component: Signin, ...authGuard },
-  { path: '/dashboard', component: Dashboard, children: [], ...authGuard }
+  {
+    path: '/dashboard', component: Dashboard, children: [
+      { path: '/', component: MainDashboard },
+      { path: 'add_posts', component: AddPosts },
+      { path: 'posts_list', component: PostsList }
+    ], ...authGuard
+  }
 ];
 
 export default new VueRouter({
