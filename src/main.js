@@ -20,7 +20,7 @@ Vue.use(MdContent);
 Vue.use(wysiwyg)
 
 Vue.use(VueResource);
-Vue.http.options.root = '';
+Vue.http.options.root = 'https://vue-gamespot-8b37d.firebaseio.com/';
 
 Vue.use(vuelidate)
 
